@@ -1,9 +1,9 @@
 FROM alpine:latest AS build
 
-ARG VERSION=1.3
+ARG DOWNLOAD_FILENAME=redbean-original-1.4.com
 
 RUN apk add --update zip bash
-RUN wget https://justine.lol/redbean/redbean-${VERSION}.com -O redbean.com
+RUN wget https://justine.lol/redbean/${DOWNLOAD_FILENAME} -O redbean.com
 RUN chmod +x redbean.com
 
 # This will normalize the binary to ELF
