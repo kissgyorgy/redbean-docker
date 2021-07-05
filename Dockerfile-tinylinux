@@ -1,16 +1,13 @@
-FROM alpine:latest AS build
+FROM alpine:latest
 
-ARG DOWNLOAD_FILENAME=redbean-original-1.4.com
+ARG DOWNLOAD_FILENAME=redbean-original-tinylinux-1.4.com
 
-RUN apk add --update zip bash
+RUN apk add --update zip
 RUN wget https://justine.lol/redbean/${DOWNLOAD_FILENAME} -O redbean.com
 RUN chmod +x redbean.com
 
-# This will normalize the binary to ELF
-RUN zip -d redbean.com .ape
 RUN ls -la redbean.com
 RUN zip -sf redbean.com
-RUN bash /redbean.com -h
 
 
 FROM scratch
