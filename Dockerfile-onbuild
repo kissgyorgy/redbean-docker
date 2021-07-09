@@ -1,0 +1,16 @@
+FROM alpine:latest
+
+ARG DOWNLOAD_FILENAME=redbean-original-1.4.com
+
+RUN apk add --update zip
+RUN wget https://justine.lol/redbean/${DOWNLOAD_FILENAME} -O redbean.com
+RUN chmod +x redbean.com
+
+ONBUILD ARG ASSETS_DIR=assets
+ONBUILD COPY ${ASSETS_DIR} /assets
+WORKDIR /assets
+ONBUILD RUN zip -r /redbean.com *
+
+# just for debugging purposes
+ONBUILD RUN ls -la /assets /redbean.com
+ONBUILD RUN zip -sf /redbean.com
