@@ -1,6 +1,6 @@
 FROM alpine:latest as build
 
-ARG DOWNLOAD_FILENAME=redbean-original-tinylinux-1.4.com
+ARG DOWNLOAD_FILENAME=redbean-original-1.4.com
 
 RUN apk add --update zip
 RUN wget https://justine.lol/redbean/${DOWNLOAD_FILENAME} -O redbean.com
