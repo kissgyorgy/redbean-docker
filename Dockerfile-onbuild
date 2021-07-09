@@ -2,9 +2,13 @@ FROM alpine:latest
 
 ARG DOWNLOAD_FILENAME=redbean-original-1.4.com
 
-RUN apk add --update zip
+RUN apk add --update zip bash
 RUN wget https://justine.lol/redbean/${DOWNLOAD_FILENAME} -O redbean.com
 RUN chmod +x redbean.com
+
+# This will normalize the binary to ELF
+RUN zip -d redbean.com .ape
+RUN bash /redbean.com -h
 
 ONBUILD ARG ASSETS_DIR=assets
 ONBUILD COPY ${ASSETS_DIR} /assets
