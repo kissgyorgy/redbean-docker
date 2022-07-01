@@ -1,22 +1,22 @@
 # Redbean in Docker
 
 The smallest possible web server in Docker!  
-Built from Redbean: https://justine.lol/redbean/, a single-file distributable web server.
+Built from Redbean: https://redbean.dev/, a single-file distributable web server.
 
-The final container takes only 304Kb:
+The final container takes only 501 kB:
 
 ```
 $ docker images redbean-static
-REPOSITORY       TAG       IMAGE ID       CREATED          SIZE
-redbean-static   latest    769b5c0d2115   22 seconds ago   304kB
+REPOSITORY      TAG         IMAGE ID      CREATED         SIZE
+redbean-static  latest      814da89a2fa7  16 minutes ago  501 kB
 ```
 
-or just 155Kb if you use the tinylinux version of Redbean:
+or just 186 kB if you use the tinylinux version of Redbean:
 
 ```
-$ docker images redbean-tiny
-REPOSITORY     TAG       IMAGE ID       CREATED          SIZE
-redbean-tiny   latest    c70c5cd15c8b   10 seconds ago   155kB
+$ docker images redbean-tinylinux
+REPOSITORY         TAG         IMAGE ID      CREATED        SIZE
+redbean-tinylinux  latest      0b98596e96d8  2 seconds ago  186 kB
 ```
 
 # Examples

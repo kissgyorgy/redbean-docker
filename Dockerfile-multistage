@@ -1,14 +1,13 @@
 FROM alpine:latest as build
 
-ARG DOWNLOAD_FILENAME=redbean-original-1.4.com
+ARG DOWNLOAD_FILENAME=redbean-original-2.0.8.com
 
 RUN apk add --update zip bash
-RUN wget https://justine.lol/redbean/${DOWNLOAD_FILENAME} -O redbean.com
+RUN wget https://redbean.dev/${DOWNLOAD_FILENAME} -O redbean.com
 RUN chmod +x redbean.com
 
-# This will normalize the binary to ELF
-RUN zip -d redbean.com .ape
-RUN bash /redbean.com -h
+# normalize the binary to ELF
+RUN sh /redbean.com --assimilate
 
 # Add your files here
 COPY assets /assets
@@ -16,8 +15,8 @@ WORKDIR /assets
 RUN zip -r /redbean.com *
 
 # just for debugging purposes
-RUN ls -la redbean.com
-RUN zip -sf redbean.com
+RUN ls -la /redbean.com
+RUN zip -sf /redbean.com
 
 
 FROM scratch
